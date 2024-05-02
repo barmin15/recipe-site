@@ -1,77 +1,107 @@
-import React from "react";
-import backgroundImage from "../../../images/food_background.jpg";
-import { TextField, Button, Typography, Box, Container } from '@mui/material';
-import { Recipe } from "../../../data/recipeDatas";
-import { request } from "../../../api/fetch";
-import { useNavigate } from "react-router";
+import React, { useEffect, useState } from 'react';
+import backgroundImage from '../../../images/food_background.jpg';
+import { Box, Container, Typography, Button } from '@mui/material';
+import { getRequest, request } from '../../../api/fetch';
+import { Ingredient, IngredientUnit, Recipe } from '../../../data/recipeDatas';
+import { useNavigate } from 'react-router';
+
+import IngredientListSection from './IngredientListSection';
+import FormFieldsSection from './FormFieldSection';
+import IngredientSelectionSection from './IngredientSelectionSection';
 
 interface RecipeFormProps {
-    setRecipe: React.Dispatch<any>,
-    fetchMethod: string,
-    fetchEndpoint: string,
-    recipe: Recipe
+  setRecipe: React.Dispatch<any>;
+  fetchMethod: string;
+  fetchEndpoint: string;
+  recipe: Recipe;
 }
 
 export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setRecipe }: RecipeFormProps) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+  const [ingredientUnits, setIngredientUnits] = useState<IngredientUnit[]>([]);
+  const [ingredient, setIngredient] = useState<string>('');
+  const [unit, setUnit] = useState<string>('');
+  const [quantity, setQuantity] = useState<number | ''>('');
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        if (name === 'ingredients') {
-            const ingredientsArray = value.split(',').map(ingredient => ingredient.trim());
-            setRecipe({ ...recipe, [name]: ingredientsArray });
-        } else {
-            setRecipe({ ...recipe, [name]: value });
-        }
-    };
+  useEffect(() => {
+    getRequest('/ingredient-units/')
+      .then((res) => setIngredientUnits(res))
+      .catch((err) => console.log(err));
 
-    function handleSubmit(e: React.FormEvent) {
-        e.preventDefault();
+    getRequest('/ingredients/')
+      .then((res) => setIngredients(res))
+      .catch((err) => console.log(err));
+  }, []);
 
-        request(fetchMethod, fetchEndpoint, recipe)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setRecipe({ ...recipe, [name]: value });
+  };
 
-        setRecipe({
-            id: 0,
-            name: '',
-            description: '',
-            preparationSteps: '',
-            ingredients: []
-        });
+  const handleAddIngredient = () => {
+    if (ingredient && unit && quantity !== '') {
+      const newIngredient = `${quantity} ${unit} ${ingredient}`;
+      setRecipe({ ...recipe, ingredients: [...recipe.ingredients, newIngredient] });
+      setIngredient('');
+      setUnit('');
+      setQuantity('');
+    }
+  };
 
-        navigate("/");
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-    return (
-        <div style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'left',
-            height: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
-            <Container maxWidth="sm">
-                <Box p={4} bgcolor="rgba(255, 255, 255, 0.8)" borderRadius={8}>
-                    <Typography variant="h4" gutterBottom align="center">
-                        Add New Recipe
-                    </Typography>
-                    <form onSubmit={handleSubmit}>
-                        <TextField fullWidth margin="normal" label="Name" name="name" value={recipe.name} onChange={handleChange} />
-                        <TextField fullWidth margin="normal" label="Description" name="description" multiline rows={4} value={recipe.description} onChange={handleChange} />
-                        <TextField fullWidth margin="normal" label="Preparation Steps" name="preparationSteps" multiline rows={4} value={recipe.preparationSteps} onChange={handleChange} />
-                        <TextField fullWidth margin="normal" label="Ingredients (separated by commas)" name="ingredients" value={recipe.ingredients.join(',')} onChange={handleChange} />
-                        <Box mt={2} textAlign="center">
-                            <Button variant="contained" color="primary" type="submit">
-                                Add Recipe
-                            </Button>
-                        </Box>
-                    </form>
-                </Box>
-            </Container>
-        </div>
-    );
+    request(fetchMethod, fetchEndpoint, recipe)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+    navigate('/');
+  };
+
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'left',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Container maxWidth="xs">
+        <Box p={2} bgcolor="rgba(255, 255, 255, 0.9)" borderRadius={8}>
+          <Typography variant="h5" gutterBottom align="center">
+            Add New Recipe
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <FormFieldsSection recipe={recipe} handleChange={handleChange} />
+            <IngredientSelectionSection
+              ingredients={ingredients}
+              ingredientUnits={ingredientUnits}
+              ingredient={ingredient}
+              unit={unit}
+              quantity={quantity}
+              setIngredient={setIngredient}
+              setUnit={setUnit}
+              setQuantity={setQuantity}
+            />
+            <Box mt={2} textAlign="center">
+              <Button variant="contained" color="primary" onClick={handleAddIngredient}>
+                Add Ingredient
+              </Button>
+            </Box>
+            <IngredientListSection recipe={recipe} />
+            <Box mt={2} textAlign="center">
+              <Button variant="contained" color="primary" type="submit">
+                Add Recipe
+              </Button>
+            </Box>
+          </form>
+        </Box>
+      </Container>
+    </div>
+  );
 }
-
