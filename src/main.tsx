@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //pages
 import Home from './pages/home/Home';
 import EditRecipe from './pages/editRecipe/EditRecipe';
-import AddNewRecipe from './pages/newRecipe/AddRecipe';
+import AddNewRecipe from './pages/editRecipe/AddRecipe';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
