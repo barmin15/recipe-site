@@ -1,21 +1,48 @@
 import React from "react";
-import backgroundImage from "../images/food_background.jpg";
-
+import backgroundImage from "../../../images/food_background.jpg";
 import { TextField, Button, Typography, Box, Container } from '@mui/material';
+import { Recipe } from "../../../data/recipeDatas";
+import { request } from "../../../api/fetch";
+import { useNavigate } from "react-router";
 
 interface RecipeFormProps {
-    handleSubmit: (e: React.FormEvent) => void;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    recipe: {
-        id: number;
-        name: string;
-        description: string;
-        preparationSteps: string;
-        ingredients: string[];
-    };
+    setRecipe: React.Dispatch<any>,
+    fetchMethod: string,
+    fetchEndpoint: string,
+    recipe: Recipe
 }
 
-export default function RecipeForm({ handleSubmit, handleChange, recipe}: RecipeFormProps) {
+export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setRecipe }: RecipeFormProps) {
+    const navigate = useNavigate();
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        if (name === 'ingredients') {
+            const ingredientsArray = value.split(',').map(ingredient => ingredient.trim());
+            setRecipe({ ...recipe, [name]: ingredientsArray });
+        } else {
+            setRecipe({ ...recipe, [name]: value });
+        }
+    };
+
+    function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+
+        request(fetchMethod, fetchEndpoint, recipe)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+
+        setRecipe({
+            id: 0,
+            name: '',
+            description: '',
+            preparationSteps: '',
+            ingredients: []
+        });
+
+        navigate("/");
+    };
+
     return (
         <div style={{
             backgroundImage: `url(${backgroundImage})`,

@@ -13,11 +13,11 @@ export default function Home() {
     const [search, setSearch] = useState<string>("");
 
     useEffect(() => {
-        getRequest("/recipe-book/recipes/")
+        getRequest("/recipes/")
             .then((res) => {
                 let filteredRecipes = res;
                 if (search.trim() !== '') {
-                    filteredRecipes = res.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()));
+                    filteredRecipes = res.filter((recipe: { name: string; }) => recipe.name.toLowerCase().includes(search.toLowerCase()));
                 }
                 setRecipes(filteredRecipes);
             })
@@ -29,8 +29,6 @@ export default function Home() {
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value);
     };
-
-    console.log(recipes)
 
     return (
         <>
