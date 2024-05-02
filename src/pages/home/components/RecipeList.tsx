@@ -1,35 +1,27 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
+import {Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
+import CollapsableTableRow from "./CollapsableTableRow"; // Import the new component
 import { Recipe } from "../../../data/recipeDatas";
 
 interface RecipeListProps {
-    recipe: Recipe;
+    recipes: Recipe[];
 }
 
-export default function RecipeList({recipe} : RecipeListProps){
+export default function RecipeList({ recipes }: RecipeListProps) {
     return (
         <TableContainer component={Paper}>
             <Table aria-label="recipe table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Description</TableCell>
-                        <TableCell>Preparation Steps</TableCell>
-                        <TableCell>Ingredients</TableCell>
+                        <TableCell>Név</TableCell>
+                        <TableCell>Leírás</TableCell>
+                        <TableCell>Elkészítési lépések</TableCell>
+                        <TableCell>Szerkesztés</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow key={recipe.id}>
-                        <TableCell>{recipe.name}</TableCell>
-                        <TableCell>{recipe.description}</TableCell>
-                        <TableCell>{recipe.preparationSteps}</TableCell>
-                        <TableCell>
-                            <ul>
-                                {recipe.ingredients.map((ingredient, index) => (
-                                    <li key={index}>{ingredient}</li>
-                                ))}
-                            </ul>
-                        </TableCell>
-                    </TableRow>
+                    {recipes.map((recipe) => (
+                        <CollapsableTableRow key={recipe.id} recipe={recipe} />
+                    ))}
                 </TableBody>
             </Table>
         </TableContainer>
