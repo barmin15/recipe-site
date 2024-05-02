@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 // Base URL and default headers can be defined outside the functions
-axios.defaults.baseURL = "";
+axios.defaults.baseURL = "https://api.server5.terc.hu/recipe-book";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 // Common function to make requests
