@@ -20,6 +20,8 @@ export default function EditRecipe() {
             .catch(err => console.log(err));
     }, []);
 
+    console.log(recipe)
+
     return (
         <RecipeForm fetchEndpoint={`/recipes/{id}`} fetchMethod="PUT" setRecipe={setRecipe} recipe={recipe} />
     )
