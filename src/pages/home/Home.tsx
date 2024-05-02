@@ -13,7 +13,7 @@ export default function Home() {
     const [search, setSearch] = useState<string>("");
 
     useEffect(() => {
-        getRequest("/recipes/")
+        getRequest("/recipe-book/recipes/")
             .then((res) => {
                 let filteredRecipes = res;
                 if (search.trim() !== '') {
@@ -29,6 +29,8 @@ export default function Home() {
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value);
     };
+
+    console.log(recipes)
 
     return (
         <>
