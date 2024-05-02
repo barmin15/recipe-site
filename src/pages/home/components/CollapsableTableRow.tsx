@@ -18,15 +18,15 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
     };
 
     const shortenText = (text: string) => {
-        return text.length > 15 ? text.slice(0, 15) + "..." : text;
+        return text.length > 20 ? text.slice(0, 20) + "..." : text;
     };
 
     return (
         <>
-            <TableRow onClick={() => handleRowClick(recipe.id)} sx={{ cursor: "pointer", "&:hover": { backgroundColor: 'lightGrey' } }}>
+            <TableRow onClick={() => handleRowClick(recipe.id)} sx={{ cursor: "pointer", "&:hover": { backgroundColor: 'lightGrey' }, width: '100%' }}>
                 <TableCell>{recipe.name}</TableCell>
                 <TableCell>{shortenText(recipe.description)}</TableCell>
-                {!isMobile && <TableCell>{shortenText(recipe.preparationSteps)}</TableCell>}
+               <TableCell >{shortenText(recipe.preparationSteps)}</TableCell>
                 <TableCell>
                     <Link to={`/edit/${recipe.id}`} style={{ textDecoration: "none" }}>
                         <IconButton aria-label="edit">
@@ -36,7 +36,7 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
                 </TableCell>
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={isMobile ? 3 : 4}>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={isMobile ? 4 : 4}>
                     <Collapse in={openRowId === recipe.id} timeout="auto" unmountOnExit>
                         <Paper elevation={3} style={{ padding: 10 }}>
                             <div>
@@ -45,11 +45,10 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
                             <div>
                                 <strong>Leírás:</strong> {recipe.description}
                             </div>
-                            {!isMobile && (
-                                <div>
-                                    <strong>Elkészítési lépések:</strong> {recipe.preparationSteps}
-                                </div>
-                            )}
+
+                            <div>
+                                <strong>Elkészítési lépések:</strong> {recipe.preparationSteps}
+                            </div>
                             <div>
                                 <strong>Hozzávalók:</strong>
                                 {recipe.ingredients.length > 0 ?
