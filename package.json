@@ -1,7 +1,7 @@
 {
   "name": "recipe-book",
   "private": true,
-  "proxy": "https://api.server5.terc.hu/recipe-book/",
+  "proxy": "https://api.server5.terc.hu",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
