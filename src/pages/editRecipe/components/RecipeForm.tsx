@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import backgroundImage from '../../../images/food_background.jpg';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { getRequest, request } from '../../../logic/fetch';
 import { Ingredient, IngredientUnit, Recipe } from '../../../data/recipeDatas';
@@ -47,39 +46,27 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'left',
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Container maxWidth="xs">
-        <Box p={2} bgcolor="rgba(255, 255, 255, 0.9)" borderRadius={8}>
-          <Typography variant="h6" gutterBottom align="center">
-            Készíts receptet
-          </Typography>
-          <form onSubmit={handleSubmit}>
-            <FormFieldsSection recipe={recipe} handleChange={handleChange} />
-            <IngredientSelectionSection
-              ingredients={ingredients}
-              ingredientUnits={ingredientUnits}
-              setRecipe={setRecipe}
-              recipe={recipe}
-            />
-            <IngredientListSection setRecipe={setRecipe} recipe={recipe} />
-            <Box mt={2} textAlign="center">
-              <Button variant="contained" color="primary" type="submit">
-                Add Recipe
-              </Button>
-            </Box>
-          </form>
-        </Box>
-      </Container>
-    </div>
+    <Container maxWidth="xs" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Box p={2} bgcolor="rgba(255, 255, 255, 0.8)" borderRadius={8}>
+        <Typography variant="h6" gutterBottom align="center">
+          Készíts receptet
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <FormFieldsSection recipe={recipe} handleChange={handleChange} />
+          <IngredientSelectionSection
+            ingredients={ingredients}
+            ingredientUnits={ingredientUnits}
+            setRecipe={setRecipe}
+            recipe={recipe}
+          />
+          <IngredientListSection setRecipe={setRecipe} recipe={recipe} />
+          <Box mt={2} textAlign="center">
+            <Button variant="contained" color="primary" type="submit">
+              Add Recipe
+            </Button>
+          </Box>
+        </form>
+      </Box>
+    </Container>
   );
 }
