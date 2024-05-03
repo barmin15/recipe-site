@@ -20,9 +20,6 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   const navigate = useNavigate();
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [ingredientUnits, setIngredientUnits] = useState<IngredientUnit[]>([]);
-  const [ingredient, setIngredient] = useState<string>('');
-  const [unit, setUnit] = useState<string>('');
-  const [quantity, setQuantity] = useState<number | ''>('');
 
   useEffect(() => {
     getRequest('/ingredient-units/')
@@ -37,16 +34,6 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setRecipe({ ...recipe, [name]: value });
-  };
-
-  const handleAddIngredient = () => {
-   /* if (ingredient && unit && quantity !== '') {
-      const newIngredient = `${quantity} ${unit} ${ingredient}`;
-      setRecipe({ ...recipe, ingredients: [...recipe.ingredients, newIngredient] });
-      setIngredient('');
-      setUnit('');
-      setQuantity('');
-    }*/
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -81,18 +68,9 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
             <IngredientSelectionSection
               ingredients={ingredients}
               ingredientUnits={ingredientUnits}
-              ingredient={ingredient}
-              unit={unit}
-              quantity={quantity}
-              setIngredient={setIngredient}
-              setUnit={setUnit}
-              setQuantity={setQuantity}
+              setRecipe={setRecipe}
+              recipe={recipe}
             />
-            <Box mt={2} textAlign="center">
-              <Button variant="contained" color="primary" onClick={handleAddIngredient}>
-                Add Ingredient
-              </Button>
-            </Box>
             <IngredientListSection recipe={recipe} />
             <Box mt={2} textAlign="center">
               <Button variant="contained" color="primary" type="submit">
