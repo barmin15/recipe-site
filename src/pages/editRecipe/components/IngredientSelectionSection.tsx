@@ -37,8 +37,6 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
     }
   };
 
-  console.log(recipe.ingredients)
-
   return (
     <>
       <FormControl fullWidth margin="normal" size="small">

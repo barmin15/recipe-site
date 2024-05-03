@@ -20,15 +20,15 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
     };
 
     const shortenText = (text: string) => {
-        return text.length > 20 ? text.slice(0, 20) + "..." : text;
+        return text.length > 14 ? text.slice(0, 14) + "..." : text;
     };
 
     return (
         <>
-            <TableRow onClick={() => handleRowClick(recipe.id)} sx={{ cursor: "pointer", "&:hover": { backgroundColor: '#803D3B66' }, width: '100%' }}>
+            <TableRow onClick={() => handleRowClick(recipe.id)} sx={{ cursor: "pointer", backgroundColor: "#FFFBF5" ,"&:hover": { backgroundColor: '#F5F5F5' }, width: '100%' }}>
                 <TableCell>{recipe.name}</TableCell>
                 <TableCell>{shortenText(recipe.description)}</TableCell>
-                <TableCell >{shortenText(recipe.preparationSteps)}</TableCell>
+                <TableCell sx={{display: { xs: 'none', sm: 'table-cell' }}}>{shortenText(recipe.preparationSteps)}</TableCell>
                 <TableCell>
                     <Link to={`/edit/${recipe.id}`} style={{ textDecoration: "none" }}>
                         <IconButton aria-label="edit" sx={{ "&:hover": { color: 'black' } }}>
@@ -38,9 +38,9 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
                 </TableCell>
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={isMobile ? 4 : 4}>
+                <TableCell sx={{ paddingBottom: 0, paddingTop: 0, backgroundColor: "#E5E1DA" }} colSpan={isMobile ? 4 : 4}>
                     <Collapse in={openRowId === recipe.id} timeout="auto" unmountOnExit>
-                        <Paper elevation={3} style={{ padding: 10 }}>
+                        <Paper elevation={3} sx={{ padding: 1, backgroundColor: "#F5F5F5" }}>
                             <OpenRecipe id={recipe.id} />
                         </Paper>
                     </Collapse>
