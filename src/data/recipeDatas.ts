@@ -3,14 +3,7 @@ export interface Recipe {
     name: string;
     description: string;
     preparationSteps: string;
-    ingredients: {
-        id: number;
-        ingredientId: number;
-        ingredientName: string;
-        amount: number;
-        unitId: number;
-        unitName: string;
-    }[];
+    ingredients: RecipeIngredient[];
 }
 
 export interface Ingredient {
@@ -21,4 +14,13 @@ export interface Ingredient {
 export interface IngredientUnit {
     id: number;
     name: string;
+}
+
+export interface RecipeIngredient {
+    id: number;
+    ingredientId: number;
+    ingredientName: string;
+    amount: number;
+    unitId: number;
+    unitName: string;
 }
