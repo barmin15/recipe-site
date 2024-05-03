@@ -9,11 +9,11 @@ export default function IngredientListSection({ recipe }: IngredientListSectionP
   return (
     <Box mt={2}>
       <Typography variant="h6" gutterBottom>
-        Ingredients:
+        Hozzávalók:
       </Typography>
-      <ul>
-        
-      </ul>
+      {recipe.ingredients.map((ingredient, index) => (
+        <ul key={index}>{`- ${ingredient.amount} ${ingredient.unitName} ${ingredient.ingredientName}`}</ul>
+      ))}
     </Box>
   );
 }
