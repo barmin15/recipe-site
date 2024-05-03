@@ -71,7 +71,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
               setRecipe={setRecipe}
               recipe={recipe}
             />
-            <IngredientListSection recipe={recipe} />
+            <IngredientListSection setRecipe={setRecipe} recipe={recipe} />
             <Box mt={2} textAlign="center">
               <Button variant="contained" color="primary" type="submit">
                 Add Recipe
