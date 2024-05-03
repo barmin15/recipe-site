@@ -46,7 +46,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   };
 
   return (
-    <Container maxWidth="xs" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '4%'}}>
+    <Container maxWidth="xs" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
       <Box p={2} bgcolor="rgba(255, 255, 255, 0.8)" borderRadius={8}>
         <Typography variant="h6" gutterBottom align="center">
           Készíts receptet
@@ -62,7 +62,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
           <IngredientListSection setRecipe={setRecipe} recipe={recipe} />
           <Box mt={2} textAlign="center">
             <Button variant="contained" color="primary" type="submit">
-              Add Recipe
+              Kész
             </Button>
           </Box>
         </form>
