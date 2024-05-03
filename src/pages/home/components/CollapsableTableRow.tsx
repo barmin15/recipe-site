@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Recipe } from "../../../data/recipeDatas";
 import { useMediaQuery } from "@mui/material";
 
+import OpenRecipe from "./OpenRecipe";
+
 interface CollapsableTableRowProps {
     recipe: Recipe;
 }
@@ -39,25 +41,7 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={isMobile ? 4 : 4}>
                     <Collapse in={openRowId === recipe.id} timeout="auto" unmountOnExit>
                         <Paper elevation={3} style={{ padding: 10 }}>
-                            <div>
-                                <strong>{recipe.name}</strong>
-                            </div>
-                            <div>
-                                <strong>Leírás:</strong> {recipe.description}
-                            </div>
-
-                            <div>
-                                <strong>Elkészítési lépések:</strong> {recipe.preparationSteps}
-                            </div>
-                            <div>
-                                <strong>Hozzávalók:</strong>
-                                {recipe.ingredients.length > 0 ?
-                                    <ul>
-                                        {recipe.ingredients.map((ingredient, index) => (
-                                            <li key={index}>{ingredient}</li>
-                                        ))}
-                                    </ul> : " nincsenek"}
-                            </div>
+                          <OpenRecipe id={recipe.id}/>
                         </Paper>
                     </Collapse>
                 </TableCell>
