@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import "./css/style.css";
 
-// Import your pages
 import Home from './pages/home/Home';
 import EditRecipe from './pages/editRecipe/EditRecipe';
 import AddNewRecipe from './pages/editRecipe/AddRecipe';

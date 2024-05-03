@@ -25,13 +25,13 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
 
     return (
         <>
-            <TableRow onClick={() => handleRowClick(recipe.id)} sx={{ cursor: "pointer", "&:hover": { backgroundColor: 'lightGrey' }, width: '100%' }}>
+            <TableRow onClick={() => handleRowClick(recipe.id)} sx={{ cursor: "pointer", "&:hover": { backgroundColor: '#803D3B66' }, width: '100%' }}>
                 <TableCell>{recipe.name}</TableCell>
                 <TableCell>{shortenText(recipe.description)}</TableCell>
-               <TableCell >{shortenText(recipe.preparationSteps)}</TableCell>
+                <TableCell >{shortenText(recipe.preparationSteps)}</TableCell>
                 <TableCell>
                     <Link to={`/edit/${recipe.id}`} style={{ textDecoration: "none" }}>
-                        <IconButton aria-label="edit">
+                        <IconButton aria-label="edit" sx={{ "&:hover": { color: 'black' } }}>
                             <EditIcon />
                         </IconButton>
                     </Link>
@@ -41,7 +41,7 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={isMobile ? 4 : 4}>
                     <Collapse in={openRowId === recipe.id} timeout="auto" unmountOnExit>
                         <Paper elevation={3} style={{ padding: 10 }}>
-                          <OpenRecipe id={recipe.id}/>
+                            <OpenRecipe id={recipe.id} />
                         </Paper>
                     </Collapse>
                 </TableCell>

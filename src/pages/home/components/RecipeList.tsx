@@ -11,11 +11,11 @@ export default function RecipeList({ recipes }: RecipeListProps) {
         <TableContainer component={Paper}>
             <Table aria-label="recipe table">
                 <TableHead>
-                    <TableRow>
-                        <TableCell>Név</TableCell>
-                        <TableCell>Leírás</TableCell>
-                        <TableCell>Elkészítési lépések</TableCell>
-                        <TableCell>Szerkesztés</TableCell>
+                    <TableRow sx={{backgroundColor: '#803D3B99'}}>
+                        <TableCell sx={{fontWeight: 'bold'}}>Név</TableCell>
+                        <TableCell sx={{fontWeight: 'bold'}}>Leírás</TableCell>
+                        <TableCell sx={{fontWeight: 'bold'}}>Elkészítési lépések</TableCell>
+                        <TableCell sx={{fontWeight: 'bold'}}>Szerkesztés</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
