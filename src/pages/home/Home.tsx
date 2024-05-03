@@ -38,7 +38,7 @@ export default function Home() {
                 value={search}
                 onChange={handleSearchChange}
                 fullWidth
-                sx={{ marginBottom: 2 }}
+                sx={{ marginBottom: 2, backgroundColor: '#FFFBF5' }}
                 InputProps={{
                     endAdornment: (
                         <IconButton onClick={() => setSearch("")} size="small">

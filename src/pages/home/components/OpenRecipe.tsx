@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRequest } from "../../../logic/fetch";
 import { Recipe } from "../../../data/recipeDatas";
-import { Typography, List, ListItem, ListItemText } from "@mui/material";
+import { Typography, List, ListItem, ListItemText, Container } from "@mui/material";
 
 interface OpenRecipeProp {
     id: number;
@@ -23,7 +23,7 @@ export default function OpenRecipe({ id }: OpenRecipeProp) {
     }, [id]);
 
     return (
-        <>
+      <Container sx={{backgroundColor: "#F5F5F5"}}>
             <Typography variant="h4" gutterBottom>
                 {recipe.name}
             </Typography>
@@ -44,6 +44,6 @@ export default function OpenRecipe({ id }: OpenRecipeProp) {
                     </ListItem>
                 ))}
             </List>
-        </>
+        </Container>
     );
 }

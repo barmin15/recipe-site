@@ -1,4 +1,4 @@
-import {Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
+import { Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 import CollapsableTableRow from "./CollapsableTableRow"; // Import the new component
 import { Recipe } from "../../../data/recipeDatas";
 
@@ -11,11 +11,11 @@ export default function RecipeList({ recipes }: RecipeListProps) {
         <TableContainer component={Paper}>
             <Table aria-label="recipe table">
                 <TableHead>
-                    <TableRow sx={{backgroundColor: '#803D3B99'}}>
-                        <TableCell sx={{fontWeight: 'bold'}}>Név</TableCell>
-                        <TableCell sx={{fontWeight: 'bold'}}>Leírás</TableCell>
-                        <TableCell sx={{fontWeight: 'bold'}}>Elkészítési lépések</TableCell>
-                        <TableCell sx={{fontWeight: 'bold'}}>Szerkesztés</TableCell>
+                    <TableRow sx={{ backgroundColor: '#803D3B' }}>
+                        <TableCell sx={{ fontWeight: 'bold' }}>Név</TableCell>
+                        <TableCell sx={{ fontWeight: 'bold' }}>Leírás</TableCell>
+                        <TableCell sx={{ fontWeight: 'bold', display: { xs: 'none', sm: 'table-cell' } }}>Elkészítési lépések</TableCell>
+                        <TableCell sx={{ fontWeight: 'bold' }}>Szekeszt</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
