@@ -22,6 +22,7 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
         ingredients: [
           ...previousIngredients,
           {
+            id: 0,
             amount : quantity,
             ingredientId: selectedIngredient.id,
             ingredientName: selectedIngredient.name,
