@@ -60,8 +60,8 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
     >
       <Container maxWidth="xs">
         <Box p={2} bgcolor="rgba(255, 255, 255, 0.9)" borderRadius={8}>
-          <Typography variant="h5" gutterBottom align="center">
-            Add New Recipe
+          <Typography variant="h6" gutterBottom align="center">
+            Készíts receptet
           </Typography>
           <form onSubmit={handleSubmit}>
             <FormFieldsSection recipe={recipe} handleChange={handleChange} />
