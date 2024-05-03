@@ -10,7 +10,7 @@ export const isLotOfSugarOrSalt = (ingredient: RecipeIngredient): boolean => {
 }
 
 //TODO
-export const isUnhealthy = (ingredient : RecipeIngredient): boolean => {
+export const isUnhealthy = (): boolean => {
     //fat and sugar can not be in the same food
     return false;
 }
