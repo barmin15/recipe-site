@@ -12,9 +12,7 @@ export default function IngredientListSection({ recipe }: IngredientListSectionP
         Ingredients:
       </Typography>
       <ul>
-        {recipe.ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
+        
       </ul>
     </Box>
   );

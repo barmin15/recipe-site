@@ -13,6 +13,6 @@ export default function AddRecipe() {
 
 
   return (
-    <RecipeForm fetchEndpoint={"/recipes"} fetchMethod={"POST"} setRecipe={setRecipe} recipe={recipe} />
+    <RecipeForm fetchEndpoint={"/recipes/"} fetchMethod={"POST"} setRecipe={setRecipe} recipe={recipe} />
   );
 };

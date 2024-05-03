@@ -40,13 +40,13 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   };
 
   const handleAddIngredient = () => {
-    if (ingredient && unit && quantity !== '') {
+   /* if (ingredient && unit && quantity !== '') {
       const newIngredient = `${quantity} ${unit} ${ingredient}`;
       setRecipe({ ...recipe, ingredients: [...recipe.ingredients, newIngredient] });
       setIngredient('');
       setUnit('');
       setQuantity('');
-    }
+    }*/
   };
 
   const handleSubmit = (e: React.FormEvent) => {
