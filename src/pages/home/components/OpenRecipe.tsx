@@ -24,7 +24,7 @@ export default function OpenRecipe({ id }: OpenRecipeProp) {
 
     return (
         <>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h4" gutterBottom>
                 {recipe.name}
             </Typography>
             <Typography variant="body1" gutterBottom>
@@ -36,14 +36,14 @@ export default function OpenRecipe({ id }: OpenRecipeProp) {
             </Typography>
             <Typography variant="body1" gutterBottom>
                 <strong>Hozzávalók:</strong>
-                <List>
-                    {recipe.ingredients.map((ingredient, index) => (
-                        <ListItem key={index}>
-                            <ListItemText primary={`${ingredient.amount} ${ingredient.unitName} ${ingredient.ingredientName}`} />
-                        </ListItem>
-                    ))}
-                </List>
             </Typography>
+            <List>
+                {recipe.ingredients.map((ingredient, index) => (
+                    <ListItem key={index}>
+                        <ListItemText primary={`${ingredient.amount} ${ingredient.unitName} ${ingredient.ingredientName}`} />
+                    </ListItem>
+                ))}
+            </List>
         </>
     );
 }
