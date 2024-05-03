@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router"
-import { getRequest } from "../../api/fetch";
+import { getRequest } from "../../logic/fetch";
 import RecipeForm from "./components/RecipeForm";
 import { Recipe } from "../../data/recipeDatas";
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import backgroundImage from '../../../images/food_background.jpg';
 import { Box, Container, Typography, Button } from '@mui/material';
-import { getRequest, request } from '../../../api/fetch';
+import { getRequest, request } from '../../../logic/fetch';
 import { Ingredient, IngredientUnit, Recipe } from '../../../data/recipeDatas';
 import { useNavigate } from 'react-router';
 

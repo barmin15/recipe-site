@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getRequest } from "../../api/fetch";
+import { getRequest } from "../../logic/fetch";
 import { Fab, TextField, IconButton } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
