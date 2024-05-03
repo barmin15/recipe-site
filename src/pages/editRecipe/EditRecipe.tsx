@@ -3,6 +3,7 @@ import { useParams } from "react-router"
 import { getRequest } from "../../logic/fetch";
 import RecipeForm from "./components/RecipeForm";
 import { Recipe } from "../../data/recipeDatas";
+import NavigateBack from "./components/NavigateBack";
 
 export default function EditRecipe() {
     let { id } = useParams();
@@ -12,7 +13,7 @@ export default function EditRecipe() {
         description: '',
         preparationSteps: '',
         ingredients: []
-      });
+    });
 
     useEffect(() => {
         getRequest(`/recipes/${id}`)
@@ -21,6 +22,9 @@ export default function EditRecipe() {
     }, []);
 
     return (
-        <RecipeForm fetchEndpoint={`/recipes/{id}`} fetchMethod="PUT" setRecipe={setRecipe} recipe={recipe} />
+        <>
+            <RecipeForm fetchEndpoint={`/recipes/{id}`} fetchMethod="PUT" setRecipe={setRecipe} recipe={recipe} />
+            <NavigateBack />
+        </>
     )
 }

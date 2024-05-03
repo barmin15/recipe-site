@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Recipe } from '../../data/recipeDatas';
 import RecipeForm from './components/RecipeForm'; 
+import NavigateBack from './components/NavigateBack';
 
 export default function AddRecipe() {
   const [recipe, setRecipe] = useState<Recipe>({
@@ -13,6 +14,9 @@ export default function AddRecipe() {
 
 
   return (
+    <>
     <RecipeForm fetchEndpoint={"/recipes/"} fetchMethod={"POST"} setRecipe={setRecipe} recipe={recipe} />
+    <NavigateBack />
+    </>
   );
 };
