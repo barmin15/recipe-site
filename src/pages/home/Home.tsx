@@ -38,11 +38,11 @@ export default function Home() {
                 value={search}
                 onChange={handleSearchChange}
                 fullWidth
-                sx={{ marginBottom: 2, backgroundColor: '#FFFBF5' }}
+                sx={{ marginBottom: 2, backgroundColor: '#FFFBF5'}}
                 InputProps={{
                     endAdornment: (
                         <IconButton onClick={() => setSearch("")} size="small">
-                            <ClearIcon />
+                            <ClearIcon sx={{"&:hover": {color: "black"}}}/>
                         </IconButton>
                     ),
                 }}
