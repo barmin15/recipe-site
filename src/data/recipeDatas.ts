@@ -3,7 +3,14 @@ export interface Recipe {
     name: string;
     description: string;
     preparationSteps: string;
-    ingredients: string[];
+    ingredients: {
+        id: number;
+        ingredientId: number;
+        ingredientName: string;
+        amount: number;
+        unitId: number;
+        unitName: string;
+    }[];
 }
 
 export interface Ingredient {
