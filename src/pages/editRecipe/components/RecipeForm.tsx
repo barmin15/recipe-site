@@ -46,7 +46,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   };
 
   return (
-    <Container maxWidth="xs" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <Container maxWidth="xs" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '4%'}}>
       <Box p={2} bgcolor="rgba(255, 255, 255, 0.8)" borderRadius={8}>
         <Typography variant="h6" gutterBottom align="center">
           Készíts receptet
