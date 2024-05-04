@@ -23,7 +23,7 @@ export default function EditRecipe() {
 
     return (
         <>
-            <RecipeForm fetchEndpoint={`/recipes/{id}`} fetchMethod="PUT" setRecipe={setRecipe} recipe={recipe} />
+            <RecipeForm fetchEndpoint={`/recipes/${id}`} fetchMethod="PUT" setRecipe={setRecipe} recipe={recipe} />
             <NavigateBack />
         </>
     )

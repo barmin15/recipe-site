@@ -42,10 +42,8 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
     e.preventDefault();
 
     request(fetchMethod, fetchEndpoint, recipe)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-
-    navigate('/');
+      .then(() => navigate('/'))
+      .catch(() => navigate('/'));
   };
 
   return (
