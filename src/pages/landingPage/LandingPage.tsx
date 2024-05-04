@@ -39,7 +39,7 @@ export default function LandingPage() {
                 value={search}
                 onChange={handleSearchChange}
                 fullWidth
-                sx={{ marginBottom: 2, backgroundColor: '#FFFBF5'}}
+                sx={{ marginBottom: 2, backgroundColor: '#EEEEEEE6'}}
                 InputProps={{
                     endAdornment: (
                         <IconButton onClick={() => setSearch("")} size="small">
