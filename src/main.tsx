@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import "./css/style.css";
 
-import Home from './pages/home/Home';
+import LandingPage from './pages/landingPage/LandingPage';
 import EditRecipe from './pages/editRecipe/EditRecipe';
 import AddNewRecipe from './pages/editRecipe/AddRecipe';
 
@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/create" element={<AddNewRecipe />} />
           <Route path="/edit/:id" element={<EditRecipe />} />
         </Routes>

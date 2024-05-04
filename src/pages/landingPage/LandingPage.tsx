@@ -8,7 +8,7 @@ import { Recipe } from "../../data/recipeDatas";
 
 import RecipeList from "./components/RecipeList";
 
-export default function Home() {
+export default function LandingPage() {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [search, setSearch] = useState<string>("");
 
