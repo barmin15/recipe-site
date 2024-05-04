@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { Select, MenuItem, InputLabel, FormControl, TextField, Box, Button } from '@mui/material';
-import { Ingredient, IngredientUnit, Recipe } from '../../../data/recipeDatas';
+import { Select, MenuItem, InputLabel, FormControl, TextField, Box, Button, Alert, IconButton } from '@mui/material';
+import { Ingredient, IngredientUnit, Recipe } from '../../../../data/recipeDatas';
+import CloseIcon from '@mui/icons-material/Close';
+import { isMobile } from 'react-device-detect';
+import { isLotOfSugarOrSalt, isNotKosher } from '../../../../logic/recipeCreation';
 
 interface IngredientSelectionSectionProps {
   ingredients: Ingredient[];
@@ -13,29 +16,44 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
   const [selectedUnit, setSelectedUnit] = useState<IngredientUnit | null>(null);
   const [selectedIngredient, setSelectedIngredient] = useState<Ingredient | null>(null);
   const [quantity, setQuantity] = useState<number | string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isOpenErrorMessage, setIsOpenErrorMessage] = useState<boolean>(false);
 
   const handleAddIngredient = () => {
-    if(selectedUnit && selectedIngredient && quantity ){
-      const previousIngredients = recipe.ingredients;
-      setRecipe({
-        ...recipe,
-        ingredients: [
-          ...previousIngredients,
-          {
-            id: 0,
-            amount : quantity,
-            ingredientId: selectedIngredient.id,
-            ingredientName: selectedIngredient.name,
-            unitId: selectedUnit.id,
-            unitName: selectedUnit.name
-          }
-        ]
-      })
-      setSelectedIngredient(null);
-      setSelectedUnit(null);
-      setQuantity("");
+    if (selectedUnit && selectedIngredient && typeof quantity === "number") {
+      if (isNotKosher(recipe.description)) {
+        setErrorMessage("kóser étel nem tartalmazhat egyzerre húst és tejterméket");
+        setIsOpenErrorMessage(true);
+      } else if (isLotOfSugarOrSalt(selectedIngredient.name, Number(quantity), selectedUnit.name)) {
+        setErrorMessage("túl sok cukrot vagy sót tartalmaz");
+        setIsOpenErrorMessage(true);
+      } else {
+        const previousIngredients = recipe.ingredients;
+        setRecipe({
+          ...recipe,
+          ingredients: [
+            ...previousIngredients,
+            {
+              id: 0,
+              amount: quantity,
+              ingredientId: selectedIngredient.id,
+              ingredientName: selectedIngredient.name,
+              unitId: selectedUnit.id,
+              unitName: selectedUnit.name
+            }
+          ]
+        })
+        setSelectedIngredient(null);
+        setSelectedUnit(null);
+        setQuantity("");
+      }
     }
   };
+
+  const handleCloseErrorMessage = () => {
+    setErrorMessage("");
+    setIsOpenErrorMessage(false);
+  }
 
   return (
     <>
@@ -91,6 +109,34 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
         <Button variant="contained" color="primary" onClick={handleAddIngredient}>
           Hozzáadom
         </Button>
+      </Box>
+      <Box
+        sx={{
+          position: 'fixed',
+          bottom: isMobile ? 'unset' : '10px',
+          top: isMobile ? '10px' : 'unset',
+          left: '10px',
+          right: '10px',
+          width: isMobile ? 'calc(100% - 20px)' : '27%',
+          zIndex: 9999,
+        }}
+        className={isOpenErrorMessage ? 'error-message open' : 'error-message'}
+      >
+        <Alert
+          severity="error"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={handleCloseErrorMessage}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+        >
+          {errorMessage}
+        </Alert>
       </Box>
     </>
   );

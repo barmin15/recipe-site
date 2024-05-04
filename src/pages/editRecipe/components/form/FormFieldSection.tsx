@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from '@mui/material';
-import { Recipe } from '../../../data/recipeDatas';
+import { Recipe } from '../../../../data/recipeDatas';
 
 interface FormFieldsSectionProps {
   recipe: Recipe;

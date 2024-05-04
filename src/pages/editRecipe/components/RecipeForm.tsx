@@ -4,9 +4,9 @@ import { getRequest, request } from '../../../logic/fetch';
 import { Ingredient, IngredientUnit, Recipe } from '../../../data/recipeDatas';
 import { useNavigate } from 'react-router';
 
-import IngredientListSection from './IngredientListSection';
-import FormFieldsSection from './FormFieldSection';
-import IngredientSelectionSection from './IngredientSelectionSection';
+import IngredientListSection from './ingredient/IngredientListSection';
+import FormFieldsSection from './form/FormFieldSection';
+import IngredientSelectionSection from './ingredient/IngredientSelectionSection';
 
 interface RecipeFormProps {
   setRecipe: React.Dispatch<any>;
@@ -21,13 +21,16 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   const [ingredientUnits, setIngredientUnits] = useState<IngredientUnit[]>([]);
 
   useEffect(() => {
-    getRequest('/ingredient-units/')
-      .then((res) => setIngredientUnits(res))
-      .catch((err) => console.log(err));
+    const fetchEndpoints: { endpoint: string; setter: (data: any) => void; }[] = [
+      { endpoint: '/ingredient-units/', setter: setIngredientUnits },
+      { endpoint: '/ingredients/', setter: setIngredients }
+    ];
 
-    getRequest('/ingredients/')
-      .then((res) => setIngredients(res))
-      .catch((err) => console.log(err));
+    fetchEndpoints.forEach(fetch => {
+      getRequest(fetch.endpoint)
+        .then((res) => fetch.setter(res))
+        .catch((err) => console.log(err));
+    })
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -46,7 +49,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   };
 
   return (
-    <Container maxWidth="xs" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '4%'}}>
+    <Container maxWidth="xs" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '4%' }}>
       <Box p={2} bgcolor="rgba(255, 255, 255, 0.8)" borderRadius={8}>
         <Typography variant="h6" gutterBottom align="center">
           Készíts receptet

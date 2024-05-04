@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box, IconButton, ListItem, ListItemText, ListItemSecondaryAction, Divider } from '@mui/material';
 import { Delete } from '@mui/icons-material';
-import { Recipe } from '../../../data/recipeDatas';
+import { Recipe } from '../../../../data/recipeDatas';
 
 interface IngredientListSectionProps {
   setRecipe: React.Dispatch<any>;
