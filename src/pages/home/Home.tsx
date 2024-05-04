@@ -4,8 +4,8 @@ import { getRequest } from "../../logic/fetch";
 import { Fab, TextField, IconButton } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
-
 import { Recipe } from "../../data/recipeDatas";
+
 import RecipeList from "./components/RecipeList";
 
 export default function Home() {
@@ -17,12 +17,13 @@ export default function Home() {
             .then((res) => {
                 let filteredRecipes = res;
                 if (search.trim() !== '') {
-                    filteredRecipes = res.filter((recipe: { name: string; }) => recipe.name.toLowerCase().includes(search.toLowerCase()));
+                    filteredRecipes = res.filter((recipe: { name: string; description: string; }) => 
+                        recipe.name.toLowerCase().includes(search.toLowerCase()) ||
+                        recipe.description.toLowerCase().includes(search.toLowerCase()));
                 }
                 setRecipes(filteredRecipes);
-            })
-            .catch((error) => {
-                console.error("Error fetching recipes:", error);
+            }).catch((error) => {
+                console.error(error);
             });
     }, [search]);
 
