@@ -23,8 +23,8 @@ export default function IngredientListSection({ recipe, setRecipe }: IngredientL
         <Box key={index}>
           <ListItem>
             <ListItemText primary={`${ingredient.amount} ${ingredient.unitName} ${ingredient.ingredientName}`} />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteIngredient(index)}>
+            <ListItemSecondaryAction style={{ right: 0 }}>
+              <IconButton aria-label="delete" onClick={() => handleDeleteIngredient(index)}>
                 <Delete />
               </IconButton>
             </ListItemSecondaryAction>
