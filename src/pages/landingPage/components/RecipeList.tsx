@@ -8,7 +8,7 @@ interface RecipeListProps {
 
 export default function RecipeList({ recipes }: RecipeListProps) {
     return (
-        <TableContainer component={Paper} style={{ maxHeight: "85vh" }}>
+        <TableContainer component={Paper} style={{ maxHeight: "80vh" }}>
             <Table aria-label="recipe table">
                 <TableHead style={{ position: "sticky", top: 0, backgroundColor: '#803D3B', zIndex: 1 }}>
                     <TableRow>
