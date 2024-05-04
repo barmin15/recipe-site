@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getRequest } from "../../../logic/fetch";
 import { Recipe } from "../../../data/recipeDatas";
 import { Typography, List, ListItem, ListItemText, Container, Paper } from "@mui/material";

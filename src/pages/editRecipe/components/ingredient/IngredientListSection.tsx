@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Box, IconButton, ListItem, ListItemText, ListItemSecondaryAction, Divider } from '@mui/material';
+import { Typography, Box, IconButton, ListItem, ListItemText, Divider } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import { Recipe } from '../../../../data/recipeDatas';
 
