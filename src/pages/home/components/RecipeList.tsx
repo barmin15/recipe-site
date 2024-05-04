@@ -1,5 +1,5 @@
 import { Table, TableContainer, Paper, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
-import CollapsableTableRow from "./CollapsableTableRow"; // Import the new component
+import CollapsableTableRow from "./CollapsableTableRow";
 import { Recipe } from "../../../data/recipeDatas";
 
 interface RecipeListProps {
@@ -8,14 +8,14 @@ interface RecipeListProps {
 
 export default function RecipeList({ recipes }: RecipeListProps) {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{ maxHeight: "85vh" }}>
             <Table aria-label="recipe table">
-                <TableHead>
-                    <TableRow sx={{ backgroundColor: '#803D3B' }}>
-                        <TableCell sx={{ fontWeight: 'bold' }}>Név</TableCell>
-                        <TableCell sx={{ fontWeight: 'bold' }}>Leírás</TableCell>
-                        <TableCell sx={{ fontWeight: 'bold', display: { xs: 'none', sm: 'table-cell' } }}>Elkészítési lépések</TableCell>
-                        <TableCell sx={{ fontWeight: 'bold' }}>Szekeszt</TableCell>
+                <TableHead style={{ position: "sticky", top: 0, backgroundColor: '#803D3B', zIndex: 1 }}>
+                    <TableRow>
+                        <TableCell sx={style.tableHead}>Név</TableCell>
+                        <TableCell sx={style.tableHead}>Leírás</TableCell>
+                        <TableCell sx={{ ...style.tableHead, ...style.tableHeadPrepSteps }}>Elkészítési lépések</TableCell>
+                        <TableCell sx={style.tableHead}>Szekeszt</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -26,4 +26,15 @@ export default function RecipeList({ recipes }: RecipeListProps) {
             </Table>
         </TableContainer>
     );
+}
+
+const style = {
+    tableHead: {
+        fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center',
+    },
+    tableHeadPrepSteps: {
+        display: { xs: 'none', sm: 'table-cell' }
+    }
 }
