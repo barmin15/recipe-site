@@ -22,12 +22,10 @@ export default function IngredientListSection({ recipe, setRecipe }: IngredientL
       {recipe.ingredients.map((ingredient, index) => (
         <Box key={index}>
           <ListItem>
-            <ListItemText primary={`${ingredient.amount} ${ingredient.unitName} ${ingredient.ingredientName}`} />
-            <ListItemSecondaryAction style={{ right: 0 }}>
               <IconButton aria-label="delete" onClick={() => handleDeleteIngredient(index)}>
-                <Delete />
+                <Delete sx={{ '&:hover': { color: 'black' } }} />
               </IconButton>
-            </ListItemSecondaryAction>
+            <ListItemText primary={`${ingredient.amount} ${ingredient.unitName} ${ingredient.ingredientName}`} />
           </ListItem>
           {index !== recipe.ingredients.length - 1 && <Divider />}
         </Box>
