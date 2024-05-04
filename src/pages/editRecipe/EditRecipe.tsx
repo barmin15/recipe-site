@@ -3,7 +3,7 @@ import { useParams } from "react-router"
 import { getRequest } from "../../logic/fetch";
 import RecipeForm from "./components/RecipeForm";
 import { Recipe } from "../../data/recipeDatas";
-import NavigateBack from "./components/NavigateBack";
+import NavigateBack from "./components/helper/NavigateBack";
 
 export default function EditRecipe() {
     let { id } = useParams();

@@ -1,9 +1,7 @@
-import { RecipeIngredient } from "../data/recipeDatas";
-
-export const isLotOfSugarOrSalt = (ingredient: RecipeIngredient): boolean => {
+export const isLotOfSugarOrSalt = (ingredientName: string, amount: number, unit: string): boolean => {
     //cant contain a lot of sugar or salt
-    if (ingredient.ingredientName === ("Só" || "Cukor")) {
-        if (ingredient.unitName === ("g" || "csésze") && ingredient.amount < 10) return false;
+    if (ingredientName === ("Só" || "Cukor")) {
+        if (unit === ("g" || "csésze") && amount < 10) return false;
         return true;
     }
     return false;

@@ -1,11 +1,20 @@
-li {
-    all: unset;
-}
-
 body {
     background-color: #F0EBE3;
     background-image: url('https://static.vecteezy.com/system/resources/previews/008/660/558/non_2x/organic-food-background-hand-drawn-concept-free-vector.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Ensures the background image remains fixed */
+    background-attachment: fixed;
+}
+
+li {
+    all: unset;
+}
+
+.error-message {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+}
+
+.error-message.open {
+    transform: translateX(0%);
 }
