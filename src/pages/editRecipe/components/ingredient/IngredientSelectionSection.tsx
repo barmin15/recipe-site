@@ -22,7 +22,7 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
 
   const handleAddIngredient = (): void => {
     if (selectedUnit && selectedIngredient && typeof quantity === "number") {
-      const kosherError = "kóser étel nem tartalmazhat egyzerre húst és tejterméket";
+      const kosherError = "kóser étel nem tartalmazhat egyszerre húst és tejterméket";
       const sugarSaltError = "túl sok cukrot vagy sót tartalmaz";
       const unhealthyWarning = "A hozzávalókban észleltünk zsírt és cukrot is";
 
