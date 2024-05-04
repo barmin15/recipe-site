@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Select, MenuItem, InputLabel, FormControl, TextField, Box, Button } from '@mui/material';
 import { Ingredient, IngredientUnit, Recipe, RecipeIngredient } from '../../../../data/recipeDatas';
 import { isLotOfSugarOrSalt, isNotKosher, isUnhealthy } from '../../../../logic/ingredientCombinations';
-import AlertSideBar from '../helper/AlertSIdeBar';
+import AlertSideBar from '../helper/AlertSideBar';
 import CautionPopup from '../helper/CautionPopup';
 
 interface IngredientSelectionSectionProps {
