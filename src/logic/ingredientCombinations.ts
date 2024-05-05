@@ -40,7 +40,7 @@ export const isUnhealthy = (includedIngredients: RecipeIngredient[], toBeAddedIn
 
     const hasSugar = includedIngredients.some(ingredient => isSugar(ingredient.ingredientName));
 
-    //if it already contains both, it means we already warned them, so there is point doing it again
+    //if it already contains both, it means we already warned them, so there is no point doing it again
     if(hasFat && hasSugar) return false
 
     if (hasFat && isSugar(toBeAddedIngredient)) return true;
