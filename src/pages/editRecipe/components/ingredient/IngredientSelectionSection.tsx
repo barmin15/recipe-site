@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { TextField } from '@mui/material';
 import { Ingredient, IngredientUnit, Recipe, RecipeIngredient } from '../../../../data/recipeDatas';
 import { isLotOfSugarOrSalt, isNotKosher, isUnhealthy } from '../../../../logic/ingredientCombinations';
 import AlertSideBar from '../helper/AlertSideBar';
 import CautionPopup from '../helper/CautionPopup';
-import IngredientSelector from './ingredietnSelector/IngredietnSelector';
-import AddIngredient from './ingredietnSelector/AddIngredient';
+import IngredientSelector from './ingredientSelector/IngredietnSelector';
+import AddIngredient from './ingredientSelector/AddIngredient';
+import QuantityInput from './ingredientSelector/QuantityInput';
 
 interface IngredientSelectionSectionProps {
   ingredients: Ingredient[];
@@ -13,19 +13,6 @@ interface IngredientSelectionSectionProps {
   setRecipe: React.Dispatch<React.SetStateAction<Recipe>>;
   recipe: Recipe;
 }
-
-const QuantityInput = ({ value, onChange }: { value: number | string; onChange: (value: number | string) => void }) => (
-  <TextField
-    fullWidth
-    margin="normal"
-    label="Mennyiség"
-    type="number"
-    name="quantity"
-    value={value}
-    onChange={(e) => onChange(e.target.value)}
-    size="small"
-  />
-);
 
 export default function IngredientSelectionSection({ ingredients, ingredientUnits, setRecipe, recipe }: IngredientSelectionSectionProps) {
   const [selectedUnit, setSelectedUnit] = useState<IngredientUnit | null>(null);
@@ -36,10 +23,8 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
   const [isOpenCautionBar, setIsOpenCautionBar] = useState<boolean>(false);
 
   const handleAddIngredient = (): void => {
-    console.log('now')
 
     if (selectedUnit && selectedIngredient && typeof quantity === "number") {
-      console.log('in')
       const kosherError = "kóser étel nem tartalmazhat egyszerre húst és tejterméket";
       const sugarSaltError = "túl sok cukrot vagy sót tartalmaz";
       const unhealthyWarning = "A hozzávalókban észleltünk zsírt és cukrot is";
