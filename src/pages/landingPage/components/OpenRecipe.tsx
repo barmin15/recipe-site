@@ -29,11 +29,11 @@ export default function OpenRecipe({ id }: OpenRecipeProp) {
                     {recipe.name}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    <strong>Leírás:</strong> {recipe.description}
+                    <strong>Leírás:</strong> <br/>{recipe.description}
                 </Typography>
 
                 <Typography variant="body1" gutterBottom>
-                    <strong>Elkészítési lépések:</strong> {recipe.preparationSteps}
+                    <strong>Elkészítési lépések:</strong> <br/>{recipe.preparationSteps}
                 </Typography>
             </Paper>
             <Paper sx={{ padding: "20px" }}>

@@ -26,7 +26,7 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
     return (
         <>
             <TableRow onClick={() => handleRowClick(recipe.id)} sx={{ cursor: "pointer" ,"&:hover": { backgroundColor: '#F5F5F5' }, width: '100%' }}>
-                <TableCell sx={{textAlign: 'center', fontWeight: 'bold'}}>{recipe.name}</TableCell>
+                <TableCell sx={{textAlign: 'center', fontWeight: 'bold', fontSize: 16}}>{recipe.name}</TableCell>
                 <TableCell sx={{textAlign: 'center'}}>{shortenText(recipe.description)}</TableCell>
                 <TableCell sx={{display: { xs: 'none', sm: 'table-cell' }, textAlign: 'center'}}>{shortenText(recipe.preparationSteps)}</TableCell>
                 <TableCell sx={{textAlign: 'center'}}>
