@@ -21,6 +21,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   const [ingredientUnits, setIngredientUnits] = useState<IngredientUnit[]>([]);
 
   useEffect(() => {
+    //have to fetch two type of data, so created array to map over to fetch
     const fetchEndpoints: { endpoint: string; setter: (data: any) => void; }[] = [
       { endpoint: '/ingredient-units/', setter: setIngredientUnits },
       { endpoint: '/ingredients/', setter: setIngredients }
@@ -36,6 +37,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    //only fetches if name, description and preperation steps are not empty
     if (
       recipe.name.trim() !== '' &&
       recipe.description.trim() !== '' &&

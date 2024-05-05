@@ -6,6 +6,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 export default function NavigateBack() {
     const navigate = useNavigate();
 
+    // if viewed on mobile the button is an arrow icon
     return isMobile ?
         <ArrowBackIosIcon
             sx={{

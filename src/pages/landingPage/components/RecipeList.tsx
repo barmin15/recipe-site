@@ -9,9 +9,9 @@ interface RecipeListProps {
 
 export default function RecipeList({ recipes }: RecipeListProps) {
     return (
-        <TableContainer component={Paper} style={{ maxHeight: isMobile ? "70vh" : "80vh" }}>
+        <TableContainer component={Paper} sx={{ maxHeight: isMobile ? "70vh" : "80vh" }}>
             <Table aria-label="recipe table">
-                <TableHead style={{ position: "sticky", top: 0, backgroundColor: '#222831', zIndex: 1 }}>
+                <TableHead sx={{ position: "sticky", top: 0, backgroundColor: '#222831', zIndex: 1 }}>
                     <TableRow>
                         <TableCell sx={style.tableHead}>Név</TableCell>
                         <TableCell sx={style.tableHead}>Leírás</TableCell>

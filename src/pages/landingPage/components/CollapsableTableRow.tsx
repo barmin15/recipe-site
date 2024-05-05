@@ -16,10 +16,12 @@ export default function CollapsableTableRow({ recipe }: CollapsableTableRowProps
     const isMobile = useMediaQuery('(max-width:600px)');
 
     const handleRowClick = (recipeId: number) => {
+        //sets openRowId, so recipe can be viewed
         setOpenRowId(openRowId === recipeId ? null : recipeId);
     };
 
     const shortenText = (text: string) => {
+        //text cannot be longer than 14 when displayed on table row
         return text.length > 14 ? text.slice(0, 14) + "..." : text;
     };
 

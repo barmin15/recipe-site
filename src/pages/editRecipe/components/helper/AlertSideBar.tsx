@@ -18,6 +18,7 @@ export default function AlertSideBar({isOpenErrorMessage, errorMessage, setIsOpe
             left: '10px',
             right: '10px',
             width: isMobile ? 'calc(100% - 20px)' : '27%',
+            //moved error message to z index 9999, so it will appear in front of every element
             zIndex: 9999,
         }}
         className={isOpenErrorMessage ? 'error-message open' : 'error-message'}
