@@ -9,7 +9,7 @@ import FormFieldsSection from './form/FormFieldSection';
 import IngredientSelectionSection from './ingredient/IngredientSelectionSection';
 
 interface RecipeFormProps {
-  setRecipe: React.Dispatch<any>;
+  setRecipe: React.Dispatch<React.SetStateAction<Recipe>>;
   fetchMethod: string;
   fetchEndpoint: string;
   recipe: Recipe;
@@ -33,15 +33,14 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
     })
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setRecipe({ ...recipe, [name]: value });
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (recipe.name.trim() !== '') {
+    if (
+      recipe.name.trim() !== '' &&
+      recipe.description.trim() !== '' &&
+      recipe.preparationSteps.trim() !== ''
+    ) {
       request(fetchMethod, fetchEndpoint, recipe)
         .then(() => navigate('/'))
         .catch(() => navigate('/'));
@@ -55,7 +54,7 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
           Készíts receptet
         </Typography>
         <form onSubmit={handleSubmit}>
-          <FormFieldsSection recipe={recipe} handleChange={handleChange} />
+          <FormFieldsSection recipe={recipe} setRecipe={setRecipe} />
           <IngredientSelectionSection
             ingredients={ingredients}
             ingredientUnits={ingredientUnits}
