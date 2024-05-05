@@ -41,9 +41,11 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    request(fetchMethod, fetchEndpoint, recipe)
-      .then(() => navigate('/'))
-      .catch(() => navigate('/'));
+    if (recipe.name.trim() !== '') {
+      request(fetchMethod, fetchEndpoint, recipe)
+        .then(() => navigate('/'))
+        .catch(() => navigate('/'));
+    }
   };
 
   return (
