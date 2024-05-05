@@ -14,7 +14,10 @@ export default function QuantityInput({ value, onChange }: QuantityInputProps) {
         type="number"
         name="quantity"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+            const input = e.target.value;
+            !input.includes('-') && onChange(e.target.value);
+        }}
         size="small"
     />)
 }

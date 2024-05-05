@@ -50,11 +50,10 @@ export default function RecipeForm({ fetchEndpoint, fetchMethod, recipe, setReci
   return (
     <Container maxWidth="xs" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '4%' }}>
       <Box p={2} bgcolor="rgba(255, 255, 255, 0.9)" borderRadius={4}>
-        <Typography variant="h6" gutterBottom align="center">
-          Készíts receptet
-        </Typography>
+        <Typography variant="h6" gutterBottom align="center">Készíts receptet</Typography>
         <form onSubmit={handleSubmit}>
           <FormFieldsSection recipe={recipe} setRecipe={setRecipe} />
+          <Typography sx={{paddingTop:2}}>Válassz hozzávalókat a recepthez:</Typography>
           <IngredientSelectionSection
             ingredients={ingredients}
             ingredientUnits={ingredientUnits}

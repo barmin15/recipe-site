@@ -4,14 +4,14 @@ import { Recipe } from '../../../../data/recipeDatas';
 
 interface FormFieldsSectionProps {
   recipe: Recipe;
-  setRecipe: React.Dispatch<React.SetStateAction<Recipe>>;
+  setRecipe: React.Dispatch<any>;
 }
 
 export default function FormFieldsSection({ recipe, setRecipe }: FormFieldsSectionProps) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setRecipe(prevRecipe => ({ ...prevRecipe, [name]: value }));
+    setRecipe({ ...recipe, [name]: value });
   };
 
   return (
@@ -31,7 +31,7 @@ export default function FormFieldsSection({ recipe, setRecipe }: FormFieldsSecti
         label="Leírás"
         name="description"
         multiline
-        rows={2}
+        rows={4}
         value={recipe.description}
         onChange={handleChange}
         size="small"
@@ -42,7 +42,7 @@ export default function FormFieldsSection({ recipe, setRecipe }: FormFieldsSecti
         label="Elkészítési lépések"
         name="preparationSteps"
         multiline
-        rows={2}
+        rows={4}
         value={recipe.preparationSteps}
         onChange={handleChange}
         size="small"
