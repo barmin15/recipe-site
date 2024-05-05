@@ -6,7 +6,7 @@ import { Recipe } from "../../data/recipeDatas";
 import NavigateBack from "./components/helper/NavigateBack";
 
 export default function EditRecipe() {
-    let { id } = useParams();
+    const { id } = useParams();
     const [recipe, setRecipe] = useState<Recipe>({
         id: 0,
         name: '',
