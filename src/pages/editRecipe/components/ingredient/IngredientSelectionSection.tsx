@@ -6,6 +6,7 @@ import CautionPopup from '../helper/CautionPopup';
 import IngredientSelector from './ingredientSelector/IngredietnSelector';
 import AddIngredient from './ingredientSelector/AddIngredient';
 import QuantityInput from './ingredientSelector/QuantityInput';
+import { Grid } from '@mui/material'; // Import Grid for layout
 
 interface IngredientSelectionSectionProps {
   ingredients: Ingredient[];
@@ -23,7 +24,6 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
   const [isOpenCautionBar, setIsOpenCautionBar] = useState<boolean>(false);
 
   const handleAddIngredient = (): void => {
-
     if (selectedUnit && selectedIngredient && typeof quantity === "number") {
       const kosherError = "kóser étel nem tartalmazhat egyszerre húst és tejterméket";
       const sugarSaltError = "túl sok cukrot vagy sót tartalmaz";
@@ -67,25 +67,33 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
 
   return (
     <>
-      <IngredientSelector
-        label="Hozzávaló"
-        options={ingredients}
-        value={selectedIngredient?.id ?? null}
-        onChange={(value) => {
-          const selectedIngredient = ingredients.find((ingredient) => ingredient.id === value);
-          setSelectedIngredient(selectedIngredient || null);
-        }}
-      />
-      <IngredientSelector
-        label="Egység"
-        options={ingredientUnits}
-        value={selectedUnit?.id ?? null}
-        onChange={(value) => {
-          const selectedUnit = ingredientUnits.find((unit) => unit.id === value);
-          setSelectedUnit(selectedUnit || null);
-        }}
-      />
-      <QuantityInput value={quantity} onChange={(value) => setQuantity(Number(value))} />
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <QuantityInput value={quantity} onChange={(value) => setQuantity(Number(value))} />
+        </Grid>
+        <Grid item xs={4}>
+          <IngredientSelector
+            label="Egység"
+            options={ingredientUnits}
+            value={selectedUnit?.id ?? null}
+            onChange={(value) => {
+              const selectedUnit = ingredientUnits.find((unit) => unit.id === value);
+              setSelectedUnit(selectedUnit || null);
+            }}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <IngredientSelector
+            label="Hozzávaló"
+            options={ingredients}
+            value={selectedIngredient?.id ?? null}
+            onChange={(value) => {
+              const selectedIngredient = ingredients.find((ingredient) => ingredient.id === value);
+              setSelectedIngredient(selectedIngredient || null);
+            }}
+          />
+        </Grid>
+      </Grid>
       <AddIngredient onClick={handleAddIngredient} />
       <CautionPopup isOpenCautionBar={isOpenCautionBar} setIsOpenCautionBar={setIsOpenCautionBar} errorMessage={errorMessage} />
       <AlertSideBar isOpenErrorMessage={isOpenErrorMessage} errorMessage={errorMessage} setIsOpenErrorMessage={setIsOpenErrorMessage} />
