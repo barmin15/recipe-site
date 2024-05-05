@@ -12,13 +12,10 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#222831',
-    },
-    secondary: {
-      main: '#E4C59E',
-    },
+    }
   },
   typography: {
-    fontFamily: 'Fruitella, sans-serif', // Apply Fruitella font globally
+    fontFamily: 'Fruitella, sans-serif',
   },
 });
 

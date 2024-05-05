@@ -1,11 +1,12 @@
-import { TextField } from '@mui/material';
+import { TextField } from "@mui/material";
 
 interface QuantityInputProps {
-    value: number | string;
+    value: string | number;
     onChange: (value: number | string) => void;
 }
 
 export default function QuantityInput({ value, onChange }: QuantityInputProps) {
+
     return (<TextField
         fullWidth
         margin="normal"
@@ -15,7 +16,5 @@ export default function QuantityInput({ value, onChange }: QuantityInputProps) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         size="small"
-    />
-    );
-
+    />)
 }
