@@ -1,3 +1,6 @@
+//Add ingredients, if included
+//I couldnt look through the whole list
+
 export const isMeat = (ingredientName: string): boolean => {
     const meatIngredients = ["hús", "sertéshús", "csirkehús", "marhahús", "pulykahús"];
     return meatIngredients.includes(ingredientName.toLowerCase());

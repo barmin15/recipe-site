@@ -13,9 +13,11 @@ export default function LandingPage() {
     const [search, setSearch] = useState<string>("");
 
     useEffect(() => {
+        //fetches the data, every time the page reloads, or the search changes
         getRequest("/recipes/")
             .then((res) => {
                 let filteredRecipes = res;
+                //if search is not empty, filter for recipes containing search
                 if (search.trim() !== '') {
                     filteredRecipes = res.filter((recipe: { name: string; description: string; }) =>
                         recipe.name.toLowerCase().includes(search.toLowerCase()) ||

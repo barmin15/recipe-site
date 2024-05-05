@@ -8,6 +8,7 @@ import LandingPage from './pages/landingPage/LandingPage';
 import EditRecipe from './pages/editRecipe/EditRecipe';
 import AddNewRecipe from './pages/editRecipe/AddRecipe';
 
+//create custom color and typography theme for the application
 const theme = createTheme({
   palette: {
     primary: {
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
+          {/*add routes for different pages*/}
           <Route path="/" element={<LandingPage />} />
           <Route path="/create" element={<AddNewRecipe />} />
           <Route path="/edit/:id" element={<EditRecipe />} />

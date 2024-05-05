@@ -6,7 +6,7 @@ import CautionPopup from '../helper/CautionPopup';
 import IngredientSelector from './ingredientSelector/IngredietnSelector';
 import AddIngredient from './ingredientSelector/AddIngredient';
 import QuantityInput from './ingredientSelector/QuantityInput';
-import { Grid } from '@mui/material'; // Import Grid for layout
+import { Grid } from '@mui/material';
 
 interface IngredientSelectionSectionProps {
   ingredients: Ingredient[];
@@ -28,7 +28,8 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
       const kosherError = "kóser étel nem tartalmazhat egyszerre húst és tejterméket";
       const sugarSaltError = "túl sok cukrot vagy sót tartalmaz";
       const unhealthyWarning = "A hozzávalókban észleltünk zsírt és cukrot is";
-
+      
+      //check to see for all health and diet condition
       if (isNotKosher(recipe.description, recipe.ingredients, selectedIngredient.name)) {
         setErrorMessage(kosherError);
         setIsOpenErrorMessage(true);
@@ -36,6 +37,7 @@ export default function IngredientSelectionSection({ ingredients, ingredientUnit
         setErrorMessage(sugarSaltError);
         setIsOpenErrorMessage(true);
       } else if (isUnhealthy(recipe.ingredients, selectedIngredient.name)) {
+        //add ingredient even if unhealthy, and show warning
         addIngredient();
         setErrorMessage(unhealthyWarning);
         setIsOpenCautionBar(true);

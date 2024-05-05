@@ -11,7 +11,6 @@ interface CautionPopupProps {
 export default function CautionPopup({ isOpenCautionBar, errorMessage, setIsOpenCautionBar }: CautionPopupProps) {
 
     return (
-        <div>
             <Backdrop
                 sx={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={isOpenCautionBar}
@@ -25,6 +24,5 @@ export default function CautionPopup({ isOpenCautionBar, errorMessage, setIsOpen
                     nyomjon bárhová, a tovább lépéshez
                 </Typography>
             </Backdrop>
-        </div>
     );
 }

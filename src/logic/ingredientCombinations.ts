@@ -1,6 +1,7 @@
 import { isDairy, isFat, isMeat, isSugar } from "../data/ingredientTypes";
 import { RecipeIngredient } from "../data/recipeDatas";
 
+//no more than 500gramms of sugar or salt can be added
 export const isLotOfSugarOrSalt = (ingredientName: string, amount: number, unit: string): boolean => {
     const sugarAndSaltThreshold = 500;
 

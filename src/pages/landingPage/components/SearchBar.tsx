@@ -11,15 +11,13 @@ interface SearchBarProps {
 export default function SearchBar({ search, setSearch }: SearchBarProps) {
     const [inputFocused, setInputFocused] = useState(false);
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value);
-    };
-
     const handleInputFocus = () => {
+        //search icon changes color when client uses search bar
         setInputFocused(true);
     };
 
     const handleInputBlur = () => {
+        //search icon changes color when client uses search bar
         setInputFocused(false);
     };
 
@@ -28,7 +26,7 @@ export default function SearchBar({ search, setSearch }: SearchBarProps) {
             placeholder="Keress Receptet"
             variant="outlined"
             value={search}
-            onChange={handleInputChange}
+            onChange={(event) =>  setSearch(event.target.value)}
             fullWidth
             sx={{ marginBottom: 2, backgroundColor: '#EEEEEEE6' }}
             InputLabelProps={{

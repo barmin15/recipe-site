@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-axios.defaults.baseURL = "https://api.server5.terc.hu/recipe-book"
+axios.defaults.baseURL = "https://api.server5.terc.hu/recipe-book";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.headers.put["Content-Type"] = "application/json";
 
@@ -14,7 +14,7 @@ const makeRequest = async (config: AxiosRequestConfig): Promise<any> => {
     }
 };
 
-// General request function
+// General request method
 export const request = (method: string, url: string, data: object = {}): Promise<any> => {
    
     const config: AxiosRequestConfig = {
@@ -28,7 +28,7 @@ export const request = (method: string, url: string, data: object = {}): Promise
     return makeRequest(config); 
 };
 
-// GET request function
+// GET request method
 export const getRequest = (url: string): Promise<any> => {
     const config: AxiosRequestConfig = {
         method: "GET",

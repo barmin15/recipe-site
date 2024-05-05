@@ -17,6 +17,7 @@ export default function OpenRecipe({ id }: OpenRecipeProp) {
     });
 
     useEffect(() => {
+        //fetch the full recipe data when client click on table row
         getRequest(`/recipes/${id}`)
             .then(res => setRecipe(res))
             .catch(err => console.log(err));
