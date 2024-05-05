@@ -1,4 +1,4 @@
-import { isDairy, isFat, isMeat, isSugar } from "../data/ingredientType";
+import { isDairy, isFat, isMeat, isSugar } from "../data/ingredientTypes";
 import { RecipeIngredient } from "../data/recipeDatas";
 
 export const isLotOfSugarOrSalt = (ingredientName: string, amount: number, unit: string): boolean => {
