@@ -4,7 +4,7 @@ import { Delete } from '@mui/icons-material';
 import { Recipe } from '../../../../data/recipeDatas';
 
 interface IngredientListSectionProps {
-  setRecipe: React.Dispatch<any>;
+  setRecipe: React.Dispatch<React.SetStateAction<Recipe>>;
   recipe: Recipe;
 }
 

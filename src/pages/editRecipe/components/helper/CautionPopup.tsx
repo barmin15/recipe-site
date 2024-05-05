@@ -18,7 +18,7 @@ export default function CautionPopup({ isOpenCautionBar, errorMessage, setIsOpen
                 onClick={() => setIsOpenCautionBar(false)}
             >
                 <Typography variant="body1" sx={{ textAlign: 'center', ml: 2, color: 'black', padding: '10px', borderRadius: '5px', fontSize: 23 }}>
-                    <Typography variant='h4'>FIGYELEM</Typography>
+                    FIGYELEM
                     <br />
                     {errorMessage}
                     <br />
